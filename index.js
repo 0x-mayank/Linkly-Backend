@@ -37,7 +37,7 @@ app.post('/api/short',async (req,res)=>{
         const  shortUrl  = nanoid(6)
         const short = shortUrl;
         const url = new Url({ originalUrl, shortUrl });
-        const myUrl = `http://localhost:3000/${shortUrl}`;
+        const myUrl = `https://linkly-backend-r1cb.onrender.com/${shortUrl}`;
         const qrCodeImg = await QRCode.toDataURL(myUrl);
 
         await url.save();
