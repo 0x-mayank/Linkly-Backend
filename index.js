@@ -2,7 +2,6 @@ import express from 'express'
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { nanoid } from 'nanoid';
-import QRCode from 'qrcode';
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -35,13 +34,10 @@ app.post('/api/short',async (req,res)=>{
         const { originalUrl } =req.body;
         if(!originalUrl) return res.status(400).json({error: "OriginalUrl error"});
         const  shortUrl  = nanoid(6)
-        const short = shortUrl;
         const url = new Url({ originalUrl, shortUrl });
-        const myUrl = `https://linkly-backend-r1cb.onrender.com/${shortUrl}`;
-        const qrCodeImg = await QRCode.toDataURL(myUrl);
 
         await url.save();
-        res.status(200).json({message: "Url Generated", shortUrl: myUrl,short,qrCodeImg})
+        res.status(200).json({message: "Url Generated", url})
     }
     catch (error){
         console.log(error)
