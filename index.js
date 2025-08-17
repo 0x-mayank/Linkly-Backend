@@ -72,5 +72,10 @@ app.get('/:shortUrl', async(req,res)=>{
     }
 })
 
+app.get("/ping", (req, res) => {
+  res.status(200).json({ message: "ok" });
+});
+
+
 
 app.listen(3000,()=>console.log("Sever is running on port 3000"))
