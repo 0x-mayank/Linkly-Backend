@@ -54,6 +54,10 @@ app.post('/api/short',async (req,res)=>{
     }
 })
 
+app.get("/ping", (req, res) => {
+  res.status(200).json({ message: "ok" });
+});
+
 
 app.get('/:shortUrl', async(req,res)=>{
     try{
@@ -72,9 +76,7 @@ app.get('/:shortUrl', async(req,res)=>{
     }
 })
 
-app.get("/ping", (req, res) => {
-  res.status(200).json({ message: "ok" });
-});
+
 
 
 
